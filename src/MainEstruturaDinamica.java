@@ -4,14 +4,14 @@ public class MainEstruturaDinamica { //Começa Guilherme
     boolean removerElemento(Object elemento);
     void removerSequencia(Object elementos);
     void removerTodasOcorrencias(Object elemento);
-    boolean estaCheia(); // Não é necessário, pois a estrutura é dinâmica
+    boolean estaCheia(); //retorna true ou false
     boolean estaVazia();
     boolean buscarElemento(Object elemento);
     void ordenarCrescente();
     void ordenarDecrescente();
     int quantidadeElementos(); 
-    void editarElemento(Object elementoAntigo, Object elementoNovo);
-    void limpar(); //Começa Samir
+    void editarElemento(Object elementoAntigo, Object elementoNovo); //Começa Samir
+    void limpar(); 
     void exibir();
     No obterPrimeiroElemento();
     No obterUltimoElemento();
