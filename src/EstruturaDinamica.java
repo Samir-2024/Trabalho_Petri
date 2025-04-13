@@ -22,8 +22,8 @@ public class EstruturaDinamica {
     }
 
     public void inserirSequencia(Object elementos) {
-        if (elementos instanceof Object[]) {
-            for (Object obj : (Object[]) elementos) {
+        if (elementos instanceof Object[] objects) {
+            for (Object obj : objects) {
                 inserirElemento(obj);
             }
         }
@@ -65,8 +65,8 @@ public class EstruturaDinamica {
     }
 
     public void removerSequencia(Object elementos) {
-        if (elementos instanceof Object[]) {
-            for (Object obj : (Object[]) elementos) {
+        if (elementos instanceof Object[] objects) {
+            for (Object obj : objects) {
                 removerElemento(obj);
             }
         }
