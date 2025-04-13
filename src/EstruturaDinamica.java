@@ -10,20 +10,20 @@ public class EstruturaDinamica {
     }
 
     public void inserirElemento(Object elemento) {
-        No novo = new No(elemento);
+        No novoNo = new No(elemento);
         if (estaVazia()) {
-            primeiroElemento = ultimoElemento = novo;
+            primeiroElemento = ultimoElemento = novoNo;
         } else {
-            ultimoElemento.setProximoNo(novo);
-            novo.setAnteriorNo(ultimoElemento);
-            ultimoElemento = novo;
+            ultimoElemento.setProximoNo(novoNo);
+            novoNo.setAnteriorNo(ultimoElemento);
+            ultimoElemento = novoNo;
         }
         qtdElementos++;
     }
 
     public void inserirSequencia(Object elementos) {
-        if (elementos instanceof Object[] objects) {
-            for (Object obj : objects) {
+        if (elementos instanceof Object[] listaElementos) {
+            for (Object obj : listaElementos) {
                 inserirElemento(obj);
             }
         }
@@ -36,7 +36,6 @@ public class EstruturaDinamica {
         }
 
         No atual = primeiroElemento;
-
         while (atual != null) {
             if (atual.getElemento().equals(elemento)) {
                 if (atual == primeiroElemento) {
@@ -60,13 +59,12 @@ public class EstruturaDinamica {
             }
             atual = atual.getProximoNo();
         }
-
         return false;
     }
 
     public void removerSequencia(Object elementos) {
-        if (elementos instanceof Object[] objects) {
-            for (Object obj : objects) {
+        if (elementos instanceof Object[] listaElementos) {
+            for (Object obj : listaElementos) {
                 removerElemento(obj);
             }
         }
@@ -78,10 +76,6 @@ public class EstruturaDinamica {
 
     public boolean estaVazia() {
         return qtdElementos == 0;
-    }
-
-    public boolean estaCheia() {
-        return qtdElementos > 0;
     }
 
     public boolean buscarElemento(Object elemento) {
@@ -97,7 +91,6 @@ public class EstruturaDinamica {
         return qtdElementos;
     }
 
-    @SuppressWarnings("unchecked")
     public void ordenarCrescente() {
         if (qtdElementos <= 1) return;
 
@@ -113,7 +106,6 @@ public class EstruturaDinamica {
         }
     }
 
-    @SuppressWarnings("unchecked")
     public void ordenarDecrescente() {
         if (qtdElementos <= 1) return;
 
@@ -137,6 +129,29 @@ public class EstruturaDinamica {
         }
     }
 
+    public boolean editarElemento(Object antigo, Object novo) {
+        if (estaVazia()) {
+            return false;
+        }
+
+        No atual = primeiroElemento;
+        while (atual != null) {
+            if (atual.getElemento().equals(antigo)) {
+                atual.setElemento(novo);
+                return true;
+            }
+            atual = atual.getProximoNo();
+        }
+
+        return false;
+    }
+
+    public void limpar() {
+        primeiroElemento = null;
+        ultimoElemento = null;
+        qtdElementos = 0;
+    }
+
     public void exibir() {
         No atual = primeiroElemento;
         while (atual != null) {
@@ -144,12 +159,6 @@ public class EstruturaDinamica {
             atual = atual.getProximoNo();
         }
         System.out.println();
-    }
-
-    public void limpar() {
-        primeiroElemento = null;
-        ultimoElemento = null;
-        qtdElementos = 0;
     }
 
     public No obterPrimeiroElemento() {

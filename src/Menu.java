@@ -16,8 +16,9 @@ public class Menu {
                 System.out.println("7. Ordenar decrescente");
                 System.out.println("8. Exibir lista");
                 System.out.println("9. Imprimir lista (linha por linha)");
-                System.out.println("10. Limpar lista");
-                System.out.println("11. Ver quantidade de elementos");
+                System.out.println("10. Editar Elemento");
+                System.out.println("11. Limpar lista");
+                System.out.println("12. Ver quantidade de elementos");
                 System.out.println("0. Sair");
                 System.out.print("Escolha uma opção: ");
                 
@@ -94,13 +95,25 @@ public class Menu {
                         System.out.println("Lista (linha por linha):");
                         lista.imprimirLista();
                     }
-                        
+                    
                     case 10 -> {
+                        System.out.print("Digite o elemento a editar: ");
+                        String elementoAntigo = scanner.nextLine();
+                        System.out.print("Digite o novo elemento: ");
+                        String novoElemento = scanner.nextLine();
+                        if (lista.editarElemento(elementoAntigo, novoElemento)) {
+                            System.out.println("Elemento editado.");
+                        } else {
+                            System.out.println("Elemento não encontrado.");
+                        }
+                    }
+                        
+                    case 11 -> {
                         lista.limpar();
                         System.out.println("Lista limpa.");
                     }
                         
-                    case 11 -> System.out.println("Quantidade de elementos: " + lista.quantidadeElementos());
+                    case 12 -> System.out.println("Quantidade de elementos: " + lista.quantidadeElementos());
                         
                     case 0 -> System.out.println("Saindo...");
                         
